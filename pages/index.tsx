@@ -60,7 +60,7 @@ const Home: NextPage = (expiryTimestamp: any) => {
         </main>
 
         <footer className={styles.footer}>
-          Copyright emi 2022
+          <p>Copyright emi 2022</p>
         </footer>
       </div>
     </>
