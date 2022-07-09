@@ -1,26 +1,25 @@
 import type { NextPage } from 'next';
+import { useTimer } from 'react-timer-hook';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { useTimer } from 'react-timer-hook';
 import Link from 'next/link';
 
 const Home: NextPage = (expiryTimestamp: any) => {
   const {
     seconds,
     minutes,
-    hours,
-    days,
+    // hours,
+    // days,
     isRunning,
     start,
     pause,
-    resume,
+    // resume,
     restart,
   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
 
-  const alert = () => {
-    window.alert('Time is up!');
-  };
-
+  // const alert = () => {
+  //   window.alert('Time is up!');
+  // };
 
   return (
     <>
@@ -33,7 +32,7 @@ const Home: NextPage = (expiryTimestamp: any) => {
 
         <main className={styles.main}>
           <div className={styles.logo}>\(^▽^)/</div>
-          <h1>Pomodoro Timer</h1>
+          <h1 className={styles.ttl}>Pomodoro Timer</h1>
           <p>{isRunning ? 'Working time!' : 'Not running'}</p>
           <div className={styles.time}><span>{minutes}</span>:<span>{seconds}</span></div>
           <div className={styles.buttons}>
