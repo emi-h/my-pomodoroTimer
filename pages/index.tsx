@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useTimer } from 'react-timer-hook';
+import Link from 'next/link';
 
 const Home: NextPage = (expiryTimestamp: any) => {
   const {
@@ -58,6 +59,12 @@ const Home: NextPage = (expiryTimestamp: any) => {
             }}>Restart</button>
           </div>
         </main>
+
+        <p className={styles.gitthublink}>Source Code on Github:
+          <Link href="https://github.com/emi-h/my-pomodoroTimer">
+            <a> https://github.com/emi-h/my-pomodoroTimer</a>
+          </Link>
+        </p>
 
         <footer className={styles.footer}>
           <p>Copyright emi 2022</p>

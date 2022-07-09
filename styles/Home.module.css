@@ -48,3 +48,9 @@
   border-radius: 5px;
   border-color: #aaa;
 }
+.gitthublink{
+  text-align: center;
+}
+.gitthublink a:hover{
+  text-decoration: underline;
+}
