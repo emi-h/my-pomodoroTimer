@@ -21,6 +21,8 @@ const Home: NextPage = (expiryTimestamp: any) => {
   //   window.alert('Time is up!');
   // };
 
+  const bgColor = isRunning ? 'blue' : 'red';
+
   return (
     <>
       <div className={styles.container}>
@@ -33,7 +35,7 @@ const Home: NextPage = (expiryTimestamp: any) => {
         <main className={styles.main}>
           <div className={styles.logo}>\(^▽^)/</div>
           <h1 className={styles.ttl}>Pomodoro Timer</h1>
-          <p>{isRunning ? 'Working time!' : 'Not running'}</p>
+          <p className={styles.message} style={{ backgroundColor: bgColor }}>{isRunning ? 'Working time!' : 'Paused or Rest'}</p>
           <div className={styles.time}><span>{minutes}</span>:<span>{seconds}</span></div>
           <div className={styles.buttons}>
             <button onClick={() => {

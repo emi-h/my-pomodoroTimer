@@ -25,6 +25,13 @@
 .ttl{
   margin-top: .1em;
 }
+.message{
+  color: #fff;
+  min-width: 300px;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
 .logo{
   font-size: 30px;
   font-weight: bold;
