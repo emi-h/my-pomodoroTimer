@@ -3,8 +3,10 @@ import { useTimer } from 'react-timer-hook';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = (expiryTimestamp: any) => {
+
   const {
     seconds,
     minutes,
@@ -15,13 +17,18 @@ const Home: NextPage = (expiryTimestamp: any) => {
     pause,
     // resume,
     restart,
-  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
-
-  // const alert = () => {
-  //   window.alert('Time is up!');
-  // };
+  } = useTimer({ expiryTimestamp, onExpire: () => audio.play() });
 
   const bgColor = isRunning ? 'blue' : 'red';
+
+  const [audio, setAudio] = useState(null);
+  useEffect(() => {
+    setAudio(new Audio('alert.mp3'));
+    // only run once on the first render on the client
+  }, []);
+  const play = () => {
+    audio.play();
+  };
 
   return (
     <>
@@ -33,6 +40,7 @@ const Home: NextPage = (expiryTimestamp: any) => {
         </Head>
 
         <main className={styles.main}>
+          <button onClick={play}>Play</button>
           <div className={styles.logo}>\(^▽^)/</div>
           <h1 className={styles.ttl}>Pomodoro Timer</h1>
           <p className={styles.message} style={{ backgroundColor: bgColor }}>{isRunning ? 'Working time!' : 'Paused or Rest'}</p>
@@ -50,6 +58,12 @@ const Home: NextPage = (expiryTimestamp: any) => {
               time.setSeconds(time.getSeconds() + 60 * 5);
               restart(time);
             }}>Set&Start 5mins</button>
+            <button onClick={() => {
+              // Restarts to 1sec timer
+              const time = new Date();
+              time.setSeconds(time.getSeconds() + 1 * 1);
+              restart(time);
+            }}>Set&Start 1sec</button>
             <button onClick={start}>Start</button>
             <button onClick={pause}>Pause</button>
             <button onClick={() => {
